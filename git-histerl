@@ -1,0 +1,9 @@
+#!/bin/bash
+if [[ $# -ne 3 ]]; then
+    echo "Usage: git histerl <revision> <file> <function>"
+    exit
+fi
+VSN=$1
+FILE=$2
+FUN=$3
+git show $VSN:$FILE | gview /dev/stdin -c 'set ft=erlang' "+/^$FUN(" -c 'set nohls'
